@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="prefix_temperature">C</string>
+    <string name="prefix_wind">m/s</string>
+    <string name="prefix_pressure">mm rt.s</string>
+    <string-array name="city_selection">
+        <item>Moscow</item>
+        <item>Saint-Petersburg</item>
+        <item>Novosibirsk</item>
+        <item>Yekaterinburg</item>
+        <item>Nizhny Novgorod</item>
+    </string-array>
+    <string name="title_activity_detail">DetailActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_wind">Wind</string>
+    <string name="text_pressure">Pressure</string>
+</resources>

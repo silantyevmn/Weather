@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="prefix_temperature">C</string>
+    <string name="prefix_wind">м/с</string>
+    <string name="prefix_pressure">мм рт.с</string>
+    <string name="text_wind">Ветер</string>
+    <string name="text_pressure">Давление</string>
+    <string-array name="city_selection">
+        <item>Москва</item>
+        <item>Санкт-Петербург</item>
+        <item>Новосибирск</item>
+        <item>Екатеринбург</item>
+        <item>Нижний Новгород</item>
+    </string-array>
+</resources>
