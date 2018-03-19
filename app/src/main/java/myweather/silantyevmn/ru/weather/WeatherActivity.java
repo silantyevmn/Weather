@@ -7,14 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Switch;
 
-public class MainActivity extends AppCompatActivity implements CityListFragment.CityListListener {
+public class WeatherActivity extends AppCompatActivity implements CityListFragment.CityListListener {
     private WeatherPreferencer preferencer;
     private Switch switchPressure,switchWind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if(CityEmitter.getCities()==null){
-            CityEmitter.initNewCityParam(MainActivity.this);
+            CityEmitter.initNewCityParam(WeatherActivity.this);
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
