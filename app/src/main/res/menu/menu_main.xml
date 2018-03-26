@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".WeatherActivity">
+    <item
+        android:id="@+id/item_menu_setting"
+        android:checkable="false"
+        android:orderInCategory="1"
+        android:title="@string/text_setting"
+        app:showAsAction="always" />
+    <group android:checkableBehavior="single">
+        <item
+            android:checkable="true"
+            android:orderInCategory="1"
+            android:title="@string/text_pressure" />
+        <item
+            android:checkable="true"
+            android:checked="true"
+            android:orderInCategory="1"
+            android:title="@string/text_wind"
+            app:showAsAction="never" />
+    </group>
 </menu>
