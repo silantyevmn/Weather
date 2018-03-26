@@ -6,6 +6,7 @@
     <string name="prefix_pressure">мм рт.с</string>
     <string name="text_wind">Ветер</string>
     <string name="text_pressure">Давление</string>
+    <string name="text_setting">Настройки</string>
     <string-array name="city_selection">
         <item>Москва</item>
         <item>Санкт-Петербург</item>
