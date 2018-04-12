@@ -27,11 +27,11 @@ public class WeatherPreferencer {
         editor.apply();
     }
 
-    public boolean getSwitchPressure() {
+    public boolean getIsPressure() {
         return sharedPreferences.getBoolean(KEY_PRESSURE,SWITCH_PRESSURE_DEFAULT);
     }
 
-    public boolean getSwitchWind() {
+    public boolean getIsWind() {
         return sharedPreferences.getBoolean(KEY_WIND,SWITCH_WIND_DEFAULT);
     }
 }
