@@ -16,7 +16,7 @@ public class CityDetailPressureAndWindFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        City city = CityEmitter.getCities()[positionID];
+        City city = CityEmitter.getCities().get(positionID);
         View view=inflater.inflate(R.layout.fragment_city_detail_pressure_and_wind, container, false);
         //покажем ветер
         TextView textViewWind = (TextView) view.findViewById(R.id.textView_wind);
