@@ -23,15 +23,12 @@ public class WeatherActivity extends AppCompatActivity implements CityListFragme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        preferencer = new WeatherPreferencer(this);
-        //switchWind=findViewById(R.id.switchWind);
-        //switchPressure=findViewById(R.id.switchPressure);
+        preferencer = new WeatherPreferencer(this,savedInstanceState);
         if (savedInstanceState == null) {
             //загрузка
             load();
         }
     }
-
 
     @Override
     public void onListItemClick(int positionID) {
@@ -62,6 +59,16 @@ public class WeatherActivity extends AppCompatActivity implements CityListFragme
     }
 
     @Override
+    public void onAddItem(int id, String nameCity) {
+        CityEmitter.addNewCity(nameCity);
+    }
+
+    @Override
+    public void onDeleteItem(int id) {
+        CityEmitter.deleteCity(id);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         itemPressure = menu.findItem(R.id.item_pressure);
@@ -85,7 +92,6 @@ public class WeatherActivity extends AppCompatActivity implements CityListFragme
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
 
     private void itemClickChecked(MenuItem item, boolean isChecked) {
@@ -100,16 +106,15 @@ public class WeatherActivity extends AppCompatActivity implements CityListFragme
     }
 
     private void save() {
-        //preferencer.save(switchWind.isChecked(),switchPressure.isChecked());
-        if (itemWind != null & itemPressure != null) {
+        if (itemWind != null && itemPressure != null) {
             preferencer.save(itemWind.isChecked(), itemPressure.isChecked());
         }
     }
 
     private void load() {
-        if (itemWind != null) itemWind.setChecked(preferencer.getIsWind());
-        if (itemPressure != null) itemPressure.setChecked(preferencer.getIsPressure());
-        //switchWind.setChecked(preferencer.getIsWind());
-        //switchPressure.setChecked(preferencer.getIsPressure());
+        if (itemWind != null && itemPressure != null){
+            itemWind.setChecked(preferencer.getIsWind());
+            itemPressure.setChecked(preferencer.getIsPressure());
+        }
     }
 }
