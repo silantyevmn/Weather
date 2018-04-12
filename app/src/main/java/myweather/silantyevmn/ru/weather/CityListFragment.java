@@ -6,16 +6,23 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
 public class CityListFragment extends Fragment {
     private final int ORIENTATION = LinearLayout.VERTICAL; //1
     private CityListListener mainActivity;
+    private MyAdapter adapter;
 
     // Создадим интерфейс, через который мы будем передавать номер строки списка, нажатой пользователем
     public interface CityListListener {
@@ -42,18 +49,36 @@ public class CityListFragment extends Fragment {
         workoutRecyclerView.setLayoutManager(layoutManager);
         // Назначим нашему RecyclerView адаптер
         workoutRecyclerView.setAdapter(new MyAdapter(CityEmitter.getCities()));
-        // Вернем View фрагмента нашей Activity
+        //registerForContextMenu(rootView);
         return rootView;// Вернем View фрагмента нашей Activity
     }
 
     // Класс, который содержит в себе все элементы списка
-    private class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener{
         private TextView cityNameTextView;
+        private final MenuItem.OnMenuItemClickListener onEditMenu = new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.item_menu_info: {
+                        int position = getAdapterPosition();
+                        showCityScreen(position);
+                        return true;
+                    }
+                    default:
+                        return false;
+                }
+                //adapter.notifyDataSetChanged();
+            }
+        };
 
         MyViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.fragment_city_list_item, parent, false));
             itemView.setOnClickListener(this);
             cityNameTextView = (TextView) itemView.findViewById(R.id.city_name_text_view);
+
+            registerForContextMenu(itemView);
+            itemView.setOnCreateContextMenuListener(this);
         }
 
         void bind(String value) {
@@ -63,6 +88,14 @@ public class CityListFragment extends Fragment {
         @Override
         public void onClick(View view) {
             showCityScreen(this.getLayoutPosition());
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+            MenuInflater inflater=getActivity().getMenuInflater();
+            inflater.inflate(R.menu.context_menu,contextMenu);
+            contextMenu.findItem(R.id.item_menu_info).setOnMenuItemClickListener(onEditMenu);
+//            contextMenu.findItem(R.id.item_menu_info).setOnMenuItemClickListener(onEditMenu);
         }
     }
 
