@@ -3,4 +3,10 @@
     <item
         android:id="@+id/item_menu_info"
         android:title="@string/text_show"/>
+    <item
+        android:id="@+id/item_menu_add"
+        android:title="добавить"/>
+    <item
+        android:id="@+id/item_menu_delete"
+        android:title="удалить"/>
 </menu>
