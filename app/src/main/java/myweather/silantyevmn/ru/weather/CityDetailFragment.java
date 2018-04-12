@@ -45,7 +45,7 @@ public class CityDetailFragment extends Fragment {
     }
 
     private View setInitView(View view) {
-        City city = CityEmitter.getCities()[positionID];
+        City city = CityEmitter.getCities().get(positionID);
         //покажем город
         TextView textViewCity = (TextView) view.findViewById(R.id.textView_city);
         textViewCity.setText(city.getName());
